@@ -1,0 +1,64 @@
+﻿@page
+@model te.Pages.stude.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<head>
+
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            background-color: #2196F3;
+            padding: 10px;
+        }
+
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+        }
+    </style>
+
+
+</head>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.student[0].Slocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.student[0].DID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.student)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Slocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DID)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.SID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.SID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.SID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
